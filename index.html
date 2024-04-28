@@ -1,41 +1,46 @@
 ---
-title: "Init"
-layout: default
-description: "「站在巨人的肩膀上」"
-header-style: text 
+layout: page
+description: "「(⊙o⊙)？」"
 ---
 
-<!-- Page Header -->
-<!DOCTYPE html>
-<html lang="en" moznomarginboxes="">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <meta name="google-site-verification" content="bR7SthvqGbB2pIOg_dHq4LeOLKf0BiMtfgGYCzNau2k">
-    <title> Bilthas </title>
-    <link href="{{ site.baseurl }}/static/base.css" rel="stylesheet">
-    <link href="{{ site.baseurl }}/static/mobile.css" rel="stylesheet" media="(max-device-width:500px)">
-    <link href="{{ site.baseurl }}/static/print.css" rel="stylesheet" media="print">
-    <link href="{{ site.baseurl }}/static/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-</head>
-<style>
-    html, body { height: 95%; } .side-image { float: none; } .content { padding: 0px; height: 100%; display: flex; align-items: center; flex-direction: column; justify-content: center; } .body { display: flex; flex-direction: column; align-items: center; justify-content: center; } p { max-width: 1200px; text-align: center; }
-</style>
-<body>
-    <div class="content">
-        <img src="{{ site.baseurl }}/static/img/avatar.jpg" height="200" style="border-radius:5px" alt="avatar image">
-        <h1> Hi </h1>
-        <p>Personal blog of Jingwen Z</p>
-        <p>Young Pal</p>
-        <p>
-            <a href="{{ site.baseurl }}/blog.html">Blogs</a> &nbsp; | &nbsp; 
-            <a href="https://github.com/bilthas">Github</a> &nbsp; | &nbsp; 
-            <a href="https://space.bilibili.com/27213322">Bilibili</a> 
-        </p>
-    </div>
+{% for post in paginator.posts %}
+<div class="post-preview">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+        <h2 class="post-title">
+            {{ post.title }}
+        </h2>
+        {% if post.subtitle %}
+        <h3 class="post-subtitle">
+            {{ post.subtitle }}
+        </h3>
+        {% endif %}
+        <div class="post-content-preview">
+            {% if post.lang == 'en' %}
+                {{ post.content | strip_html | truncate:300 }}
+            {% else %}
+                {{ post.content | strip_html | truncate:200 }}
+            {% endif %}
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
+    </p>
+</div>
+<hr>
+{% endfor %}
 
-    <script src="{{ site.baseurl }}/static/mobile.js"></script>
-</body>
-</html>
-
+<!-- Pager -->
+{% if paginator.total_pages > 1 %}
+<ul class="pager">
+    {% if paginator.previous_page %}
+    <li class="previous">
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
+    </li>
+    {% endif %}
+    {% if paginator.next_page %}
+    <li class="next">
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+    </li>
+    {% endif %}
+</ul>
+{% endif %}
