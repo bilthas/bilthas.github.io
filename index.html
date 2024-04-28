@@ -6,16 +6,17 @@ header-style: text
 ---
 
 <!-- Page Header -->
+<!DOCTYPE html>
 <html lang="en" moznomarginboxes="">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width">
     <meta name="google-site-verification" content="bR7SthvqGbB2pIOg_dHq4LeOLKf0BiMtfgGYCzNau2k">
     <title> Bilthas </title>
-    <link href="./static/base.css" rel="stylesheet">
-    <link href="./static/mobile.css" rel="stylesheet" media="(max-device-width:500px)">
-    <link href="./static/print.css" rel="stylesheet" media="print">
-    <link href="./static/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="{{ site.baseurl }}/static/base.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/static/mobile.css" rel="stylesheet" media="(max-device-width:500px)">
+    <link href="{{ site.baseurl }}/static/print.css" rel="stylesheet" media="print">
+    <link href="{{ site.baseurl }}/static/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <style>
@@ -23,7 +24,7 @@ header-style: text
 </style>
 <body>
     <div class="content">
-        <img src="./static/img/avatar.jpg" height="200" style="border-radius:5px" alt="avatar image">
+        <img src="{{ site.baseurl }}/static/img/avatar.jpg" height="200" style="border-radius:5px" alt="avatar image">
         <h1> Hi </h1>
         <p>Personal blog of Jingwen Z</p>
         <p>Young Pal</p>
@@ -34,7 +35,7 @@ header-style: text
         </p>
     </div>
 
-    <script src="./static/mobile.js"></script>
+    <script src="{{ site.baseurl }}/static/mobile.js"></script>
 </body>
 </html>
 
