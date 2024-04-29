@@ -4,6 +4,8 @@ title:          "博客测试"
 author:         "Bilthas"
 header-img:     "img/post-bg-2015.jpg"
 catalog:        true
+tags:
+    - 杂项
 ---
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
