@@ -1,0 +1,86 @@
+layout:         post
+title:          "Lua 闭包"
+author:         "Bilthas"
+header-img:     "img/post-bg-2015.jpg"
+catalog:        true
+tags:
+    - Lua
+
+# 闭包机制
+
+Lua中的函数目前看来有两个关键的特点，一个叫first-class values，另一个叫lexical scoping
+
+first-class values：就是说function后面的函数名其实是一个变量，而实际的函数内容就是赋给变量的值，有点函数指针的意思。因而函数名自然也可以作为参数进行传递。
+
+```lua
+function foo(x) return 2*x end
+-- 等价于
+foo = function(x) return 2*x end
+```
+
+lexical scoping：翻译成词法定界，感觉和一般搜索到的该词不是完全一个意思，不过不重要，在Lua里面其想表示对意思是被嵌套的函数可以访问他外部函数中的变量。
+
+```lua
+function newCounter() 
+    local i = 0 
+    return function() -- anonymous function 
+         i = i + 1 
+         return i 
+    end 
+end
+```
+
+比如这个例子，以函数定义的作用域来看，i对于返回函数来说是一个外部的变量，但在这里是可以访问到的，这里算是正常，毕竟它们都在newCounter的作用域内，但是如果按如下例子调用：
+
+
+```lua
+c1 = newCounter() 
+print(c1()) --> 1 
+print(c1()) --> 2 
+```
+
+newCounter函数已经返回了，内部的i应该已经释放掉了，但从它返回的函数仍然能不断的输出正确+1的结果。
+
+这里就出现了所谓闭包的概念，闭包的名字很抽象，按照Wiki的说明，如果函数f内定义了函数g，那么如果g存在自由变量（在函数外部定义但在函数内被引用），且这些自由变量没有在编译过程中被优化掉，那么将产生闭包。结合上面的例子，就是因为返回的函数里面仍然能够获取到i这个变量，所以称为闭包。
+
+闭包和匿名函数几乎是一个概念，只不过闭包相比之下多了一个外部变量，所以说是闭包，但个人认为不如说“带着自由变量的匿名函数”好理解一些，在Lua里面会把这种外部的变量称为上值upvalue，或者叫外部的局部变量external local variable，更直接的对比即是：
+
+```lua
+-- 这里返回之后就构成闭包
+function newCounter() 
+    local i = 0 
+    return function() 
+         i = i + 1 
+         return i 
+    end 
+end
+-- 这里返回的匿名函数
+function newCounter() 
+    return function()
+         local i = 0 
+         i = i + 1 
+         return i 
+    end 
+end
+```
+
+从刚才的c1实例继续，如果之后继续创建新实例。
+
+```lua
+c2 = newCounter() 
+print(c2()) --> 1 
+print(c1()) --> 3 
+print(c2()) --> 2
+```
+
+可以看到每一个c2是从头开始并且和c1独立的，由此其实可以推测这里的实现应该是对每一个创建的实例有那么一个环境与之相关，创建实例的时候这些upvalue就会被写到里面去，实现闭包的效果。
+
+# 实现原理
+
+//TODO
+
+
+
+More
+
+https://zhuanlan.zhihu.com/p/494191824
