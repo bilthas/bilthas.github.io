@@ -8,6 +8,13 @@ tags:
     - Lua
 ---
 
+# 前言
+
+入行游戏行业后开始接触Lua，目前的使用体会是Lua是一门小巧简单的语言，虽然上手很简单但是有一些独特之处还没有详细了解过，所以想对一些值得记录的点总结思考一下。（防止因为不常用就一股脑过去了。。）
+
+这一篇记录一些有关闭包的设计。
+
+
 # 闭包机制
 
 Lua中的函数目前看来有两个关键的特点，一个叫first-class values，另一个叫lexical scoping
@@ -85,4 +92,4 @@ print(c2()) --> 2
 
 More
 
-https://zhuanlan.zhihu.com/p/494191824
+<https://zhuanlan.zhihu.com/p/494191824>
