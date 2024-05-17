@@ -27,7 +27,7 @@ function foo(x) return 2*x end
 foo = function(x) return 2*x end
 ```
 
-lexical scoping：翻译成词法定界，感觉和一般搜索到的该词不是完全一个意思，不过不重要，在Lua里面其想表示对意思是被嵌套的函数可以访问他外部函数中的变量。
+lexical scoping：翻译成词法定界，感觉和一般搜索到的该词不是完全一个意思，不过不重要，在Lua里面其想表示的意思是被嵌套的函数可以访问他外部函数中的变量。
 
 ```lua
 function newCounter() 

@@ -6,4 +6,4 @@ RT/offline Rendering + Appearance Modeling + Future Display Equip. + Emerging Te
 
 想要建立一个个人网站记录一些学习和思考，因而有了这里。
 
-联系方式：bithas@qq.com
+联系方式：bilthas@qq.com
