@@ -9,16 +9,13 @@
         position: relative;
         width: 100%;
         overflow: hidden;
-
+        padding-top: 56.25%; /* 16:9 宽高比 (9 / 16 = 0.5625) */
+        
         background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}');
-        /* background: {{ page.header-bg-css }}; */
-    }
+        background-size: cover; /* 背景图片覆盖整个区域 */
+        background-position: center; /* 背景图片居中 */
 
-    /* 设置 background-img 的样式 */
-    header.intro-header .background-img {
-        width: 100%; /* 宽度设为100% */
-        height: auto; /* 高度根据宽度自动调整 */
-        display: block;
+        /* background: {{ page.header-bg-css }}; */
     }
 
     header.intro-header .header-mask{
