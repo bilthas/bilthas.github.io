@@ -7,14 +7,9 @@
 <style type="text/css">
     header.intro-header{
         position: relative;
-        width: 100%;
-        overflow: hidden;
-        padding-top: 56.25%; /* 16:9 宽高比 (9 / 16 = 0.5625) */
-        
-        background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}');
-        background-size: cover; /* 背景图片覆盖整个区域 */
-        background-position: center; /* 背景图片居中 */
+        height: 1000px;
 
+        background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}');
         /* background: {{ page.header-bg-css }}; */
     }
 
