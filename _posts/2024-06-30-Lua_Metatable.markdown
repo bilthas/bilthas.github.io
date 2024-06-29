@@ -223,4 +223,5 @@ Output:
 类似的方法，我们可以将表设置为只读的，在newindex中输出error，而不进行赋值即可。
 
 More
+
 Programming in lua 4th
