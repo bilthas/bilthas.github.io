@@ -1,11 +1,11 @@
 ---
 layout:         post
-title:          "第一次演唱会体验"
+title:          "设计模式汇总"
 author:         "Bilthas"
-header-img:     "img/Lisa.jpg"
+header-img:     "img/post-bg-os-metro.jpg"
 catalog:        true
 tags:
-    - 随便写写
+    - 设计模式
 ---
 
 
